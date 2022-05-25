@@ -1,30 +1,16 @@
 package list
 
+// https://leetcode.cn/problems/remove-nth-node-from-end-of-list/
+
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
-	var lst []*ListNode
-	if head == nil {
-		return nil
+	dummy := &ListNode{0, head}
+	first, second := head, dummy
+	for i := 0; i < n; i++ {
+		first = first.Next
 	}
-	if head.Next == nil && n == 1 {
-		return nil
+	for ; first != nil; first = first.Next {
+		second = second.Next
 	}
-	node := head
-	lst = append(lst, node)
-	for node.Next != nil {
-		if n == 1 && node.Next.Next == nil {
-			node.Next = nil
-			return head
-		}
-		node = node.Next
-		lst = append(lst, node)
-	}
-
-	if len(lst) == n {
-		return head.Next
-	}
-
-	node = lst[len(lst)-n]
-	node.Val = node.Next.Val
-	node.Next = node.Next.Next
-	return head
+	second.Next = second.Next.Next
+	return dummy.Next
 }
