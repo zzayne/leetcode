@@ -19,6 +19,9 @@ func getNodeList(nums []int) *ListNode {
 }
 
 func getListNums(head *ListNode) (out []int) {
+	if head == nil {
+		return nil
+	}
 	node := head
 	out = append(out, node.Val)
 	for node.Next != nil {
