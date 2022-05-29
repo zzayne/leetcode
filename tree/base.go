@@ -15,19 +15,16 @@ func GetTree(nums []*int) *TreeNode {
 		nodes = append(nodes, getNode(nums, i))
 	}
 
-	level := 0
 	for i := 0; i < len(nodes); i++ {
-		if i > level*2 {
-			level++
-		}
 		if nodes[i] == nil {
 			continue
 		}
-		if i+level*2+1 < len(nodes) {
-			nodes[i].Left = nodes[i+level*2+1]
+		idx := i * 2
+		if idx+1 < len(nodes) {
+			nodes[i].Left = nodes[idx+1]
 		}
-		if i+level*2+2 < len(nodes) {
-			nodes[i].Right = nodes[i+level*2+2]
+		if idx+2 < len(nodes) {
+			nodes[i].Right = nodes[idx+2]
 		}
 	}
 	return nodes[0]
