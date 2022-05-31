@@ -4,6 +4,8 @@ import (
 	"strconv"
 )
 
+//https://leetcode.cn/problems/count-and-say/
+
 func countAndSay(n int) string {
 	current := "1"
 	if n == 1 {
