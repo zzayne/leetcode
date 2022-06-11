@@ -1,27 +1,16 @@
 package array
 
-func twoSum(nums []int, target int) []int {
-	m := make(map[int]int)
-	var sameIdx []int
-	for i, v := range nums {
-		if v == target-v {
-			sameIdx = append(sameIdx, i)
-			continue
-		}
-		if j, ok := m[target-v]; ok {
-			return []int{i, j}
-		}
-		m[v] = i
-	}
-
-	if len(sameIdx) > 0 {
-		return sameIdx
-	}
-
-	for num, idx := range m {
-		if j, ok := m[target-num]; ok {
-			return []int{idx, j}
+func twoSum(numbers []int, target int) []int {
+	l, r := 0, len(numbers)-1
+	for l < r {
+		sum := numbers[l] + numbers[r]
+		if sum == target {
+			return []int{l + 1, r + 1}
+		} else if sum < target {
+			l++
+		} else {
+			r--
 		}
 	}
-	return nil
+	return []int{-1, -1}
 }

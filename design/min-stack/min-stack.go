@@ -1,4 +1,4 @@
-package design
+package min_stack
 
 type MinStack struct {
 	nums []int
