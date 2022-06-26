@@ -11,7 +11,10 @@ func Test_firstUniqChar(t *testing.T) {
 	//})
 
 	Convey("test2", t, func() {
-		So(firstUniqChar("aadadaad"), ShouldEqual, -1)
+		So(firstUniqChar("abaccdeff"), ShouldEqual, 'b')
+	})
+	Convey("test3", t, func() {
+		So(firstUniqChar(""), ShouldEqual, ' ')
 	})
 
 	//Convey("test3", t, func() {
